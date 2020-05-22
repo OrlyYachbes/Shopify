@@ -23,12 +23,10 @@ public class LogInController {
 			String userName = view.getName();
 			String pass = view.getPass();
 			
-			if(model.logIn(userName, pass)) {
-				//logged in succesfully
-			}
-			else {
+			if(model.logIn(userName, pass) == false) {
 				view.displayMessage("User name or password is incorrect");
 			}
+			
 			
 		}
 	}

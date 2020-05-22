@@ -13,11 +13,20 @@ public class LogInModel {
 		fm = FrameManager.getInstance();
 	}
 	
-	public boolean logIn(String userName, String password){
-		//implement...
-		//move to...
-		return true;
-	};
+	public boolean logIn(String userId, String password){
+		
+		if(db.selectManager(userId, password)) {
+			fm.setManager(true);
+			fm.moveToEmpMainMenuPage();
+			return true;
+		} else if(db.selectEmployee(userId, password)) {
+			fm.setManager(false);
+			fm.moveToEmpMainMenuPage();
+			return true;
+		} else
+			return false;
+	}
+	
 	
 	
 
