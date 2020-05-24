@@ -20,12 +20,17 @@ public class LogInController {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			String userName = view.getName();
+			String userName = view.getUserName();
 			String pass = view.getPass();
 			
-			if(model.logIn(userName, pass) == false) {
+			
+		if(model.logIn(userName, pass) == false) {
 				view.displayMessage("User name or password is incorrect");
 			}
+		else {
+			view.setVisible(false);
+			view.dispose();
+		}
 			
 			
 		}

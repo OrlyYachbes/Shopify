@@ -2,6 +2,7 @@ package database;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -32,9 +33,9 @@ public class DataBase {
    
   
     public boolean selectEmployee(String id, String password){  
-    	 String sql = "SELECT * FROM employee where id = " + id + " AND password = " + password;  
+    	String sql = "SELECT * FROM employee where id = " + id + " AND password = " + password;  
+    	 
 
-         
          try {  
              Connection conn = this.connect();  
              Statement stmt  = conn.createStatement();  
@@ -89,6 +90,49 @@ public class DataBase {
        return false;
    }
     
+    public ResultSet importProductsList(){  
+    	
+      	 String sql = "SELECT * FROM item";  
+
+           
+           try {  
+               Connection conn = this.connect();  
+               Statement stmt  = conn.createStatement();         
+               ResultSet rs    = stmt.executeQuery(sql);  
+
+               return rs;
+                
+
+          } catch (SQLException e) {  
+              System.out.println(e.getMessage());  
+          }  
+          
+          return null; //need to find something else
+      }
+    
+    public ResultSet getProductById(String id) { 
+    	if(id.equals("")) {
+    		return this.importProductsList();
+    	} else {
+    		String sql = "SELECT * FROM item where item_id = ?"; //cant fined strings
+    		
+    		try {
+    			Connection conn = this.connect();  
+                //Statement stmt  = conn.createStatement();  
+                //ResultSet rs    = stmt.executeQuery(sql); 
+                
+    			PreparedStatement pstmt = conn.prepareStatement(sql);
+    			pstmt.setString(1, id);
+    			ResultSet rs = pstmt.executeQuery();
+                return rs;
+    		} catch (SQLException e) {  
+    	           System.out.println(e.getMessage());  
+    	       }  
+    		
+    		return null;
+    	}
+    	
+    }
     
     
 }

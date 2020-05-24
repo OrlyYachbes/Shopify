@@ -1,5 +1,7 @@
 package model;
 
+import java.sql.ResultSet;
+
 import database.DataBase;
 
 public class EmpProductsPageModel {
@@ -13,13 +15,14 @@ public class EmpProductsPageModel {
 	}
 	
 	
-	//need to change return type!!
-	public void getProductsList() {
-		
+
+	public ResultSet getProductsList() {
+		return db.importProductsList();
 	}
 	
 	//need to change return type!!
-	public void getProductsListById(String id) {
+	public ResultSet getProductsListById(String id) {
+		return db.getProductById(id);
 		
 	}
 	

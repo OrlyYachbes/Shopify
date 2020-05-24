@@ -7,6 +7,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import java.awt.event.ActionListener;
 
@@ -81,12 +83,20 @@ public class LogInView extends JFrame {
 	}
 	
 	public String getPass() {
-		//implement
-		return "";
+		char [] pass = passwordField.getPassword();
+		
+		StringBuilder sb = new StringBuilder();
+		for (Character ch: pass) {
+			sb.append(ch);
+		}
+
+		String string = sb.toString();
+		
+		return string;
 	}
 	
 	public void displayMessage(String msg) {
-		//implement	
+		JOptionPane.showMessageDialog(this,msg);
 	}
 	
 	public void setLogInAL(ActionListener actionListener) {

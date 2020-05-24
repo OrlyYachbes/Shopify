@@ -6,11 +6,15 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import net.proteanit.sql.DbUtils;
+
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
 
 import javax.swing.JTable;
 import javax.swing.JScrollPane;
@@ -100,6 +104,12 @@ public class EmpProductsPageView extends JFrame {
 	
 	public String getSearchText() {
 		return this.textSearch.getText();
+	}
+	
+	//Other methods:
+	
+	public void setProductsListToTable(ResultSet rs) {
+		this.table.setModel(DbUtils.resultSetToTableModel(rs));
 	}
 	
 }

@@ -1,11 +1,17 @@
 package model;
 
 import controller.EmpMainMenuController;
+import controller.EmpProductsPageController;
 import controller.LogInController;
 import controller.ManagerMainMenuController;
+import controller.ManagerProductsPageController;
+import controller.OrderPageController;
 import view.EmpMainMenuView;
+import view.EmpProductsPageView;
 import view.LogInView;
 import view.ManagerMainMenuView;
+import view.ManagerProductsPageView;
+import view.OrderPageView;
 
 public class FrameManager {
 
@@ -25,7 +31,7 @@ public class FrameManager {
     public void moveToLoginPage(){
     	LogInView view = new LogInView();
     	LogInModel model = new LogInModel();
-    	new LogInController(view, model);
+    	LogInController controller = new LogInController(view, model);
     	view.setVisible(true);
     }
     
@@ -33,7 +39,7 @@ public class FrameManager {
     public void moveToEmpMainMenuPage(){
     	EmpMainMenuView view = new EmpMainMenuView();
     	EmpMainMenuModel model = new EmpMainMenuModel();
-    	new EmpMainMenuController(view, model);
+    	EmpMainMenuController controller = new EmpMainMenuController(view, model);
     	view.setVisible(true);	   	
     	
     }
@@ -41,15 +47,31 @@ public class FrameManager {
     public void moveToManagerMainMenuPage(){
     	ManagerMainMenuView view = new ManagerMainMenuView();
     	ManagerMainMenuModel model = new ManagerMainMenuModel();
-    	new ManagerMainMenuController(view, model);
+    	ManagerMainMenuController controller = new ManagerMainMenuController(view, model);
     	view.setVisible(true);	
     }
     
-    public void moveToOrderPage(){}
+    public void moveToOrderPage(){
+    	OrderPageView view = new OrderPageView();
+    	OrderPageModel model = new OrderPageModel();
+    	new OrderPageController(view, model);
+    	view.setVisible(true);
+    	
+    }
     
-    public void moveToEmpProductsPage(){}
+    public void moveToEmpProductsPage(){
+    	EmpProductsPageView view = new EmpProductsPageView();
+    	EmpProductsPageModel model = new EmpProductsPageModel();
+    	new EmpProductsPageController(view, model);
+    	view.setVisible(true);
+    }
     
-    public void moveToManagerProductsPage(){}
+    public void moveToManagerProductsPage(){
+    	ManagerProductsPageView view = new ManagerProductsPageView();
+    	ManagerProductsPageModel model = new ManagerProductsPageModel();
+    	new ManagerProductsPageController(view, model);
+    	view.setVisible(true);
+    }
     
     public void moveToManageEmpPage(){}
     

@@ -16,8 +16,8 @@ public class EmpProductsPageController {
 		this.view = view;
 		this.model = model;
 		view.addBtnActionListner(new BtnActionListener());
-		//need to render the list in listView!!
-		model.getProductsList();
+
+		view.setProductsListToTable(model.getProductsList());
 	}
 	
 	class BtnActionListener implements ActionListener{
@@ -34,7 +34,7 @@ public class EmpProductsPageController {
 				String id = view.getSearchText();
 				
 				//need to render the list in listView!!
-				model.getProductsListById(id);
+				view.setProductsListToTable(model.getProductsListById(id));
 			}
 		}
 		
