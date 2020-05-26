@@ -1,16 +1,17 @@
 package model;
 
 import controller.EmpMainMenuController;
+import controller.EmpMainMenuController;
 import controller.EmpProductsPageController;
 import controller.LogInController;
 import controller.ManagerMainMenuController;
-import controller.ManagerProductsPageController;
+//import controller.ManagerProductsPageController;
 import controller.OrderPageController;
 import view.EmpMainMenuView;
 import view.EmpProductsPageView;
 import view.LogInView;
 import view.ManagerMainMenuView;
-import view.ManagerProductsPageView;
+//import view.ManagerProductsPageView;
 import view.OrderPageView;
 
 public class FrameManager {
@@ -67,10 +68,10 @@ public class FrameManager {
     }
     
     public void moveToManagerProductsPage(){
-    	ManagerProductsPageView view = new ManagerProductsPageView();
-    	ManagerProductsPageModel model = new ManagerProductsPageModel();
-    	new ManagerProductsPageController(view, model);
-    	view.setVisible(true);
+//    	ManagerProductsPageView view = new ManagerProductsPageView();
+//    	ManagerProductsPageModel model = new ManagerProductsPageModel();
+//    	new ManagerProductsPageController(view, model);
+//    	view.setVisible(true);
     }
     
     public void moveToManageEmpPage(){}

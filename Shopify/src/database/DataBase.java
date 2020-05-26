@@ -118,9 +118,6 @@ public class DataBase {
     		
     		try {
     			Connection conn = this.connect();  
-                //Statement stmt  = conn.createStatement();  
-                //ResultSet rs    = stmt.executeQuery(sql); 
-                
     			PreparedStatement pstmt = conn.prepareStatement(sql);
     			pstmt.setString(1, id);
     			ResultSet rs = pstmt.executeQuery();
@@ -133,6 +130,47 @@ public class DataBase {
     	}
     	
     }
+    
+    public boolean updateProductQuantity(String id, int quantity){  
+    	String sql = "UPDATE item SET quantity = ? WHERE item_id = ?";  
+    	 
+
+         try {  
+        	 
+            Connection conn = this.connect();  
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, quantity);
+            pstmt.setString(2, id);
+            ResultSet rs = pstmt.executeQuery();
+
+            return true;
+
+        } catch (SQLException e) {  
+            System.out.println(e.getMessage());  
+        }  
+        
+        return false;
+    }
+    
+    public int getItemQuantity(String id){  
+    	String sql = "SELECT quantity FROM item where item_id = " + id; 
+    	 
+
+         try {  
+             Connection conn = this.connect();  
+             Statement stmt  = conn.createStatement();  
+             ResultSet rs    = stmt.executeQuery(sql);
+             int quantity = rs.getInt("quantity");
+
+            return quantity;
+              
+
+        } catch (SQLException e) {  
+            System.out.println(e.getMessage());  
+        }  
+        
+        return 0;
+    } 
     
     
 }

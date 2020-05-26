@@ -6,9 +6,18 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
+
+import net.proteanit.sql.DbUtils;
+
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.sql.ResultSet;
 
 import javax.swing.JButton;
 import javax.swing.JTextField;
@@ -25,6 +34,7 @@ public class OrderPageView extends JFrame {
 	private JTextField textProductQuantity;
 	private JTable tableProductsList;
 	private JTable tableOrderList;
+	private DefaultTableModel model;
 
 	/**
 	 * Launch the application.
@@ -100,7 +110,12 @@ public class OrderPageView extends JFrame {
 		scrollPane_1.setBounds(376, 95, 220, 206);
 		contentPane.add(scrollPane_1);
 		
-		tableOrderList = new JTable();
+		model = new DefaultTableModel(); 
+		tableOrderList = new JTable(model);
+		
+		model.addColumn("Product id"); 
+		model.addColumn("Quantity");
+		
 		scrollPane_1.setViewportView(tableOrderList);
 		
 		JLabel lblNewLabel_3 = new JLabel("Products List:");
@@ -110,6 +125,26 @@ public class OrderPageView extends JFrame {
 		JLabel lblNewLabel_4 = new JLabel("Order List:");
 		lblNewLabel_4.setBounds(378, 77, 84, 14);
 		contentPane.add(lblNewLabel_4);
+		
+		tableProductsList.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				int row = tableProductsList.getSelectedRow();
+				
+				String id = tableProductsList.getModel().getValueAt(row, 0).toString();
+				textProductdId.setText(id);
+			}
+		});
+	}
+	
+	//getters and setters:
+	public String getId() {
+		return textProductdId.getText();
+	}
+	
+	public String getQuantity() {
+		return textProductQuantity.getText();
 	}
 	
 	//Methods:
@@ -134,6 +169,29 @@ public class OrderPageView extends JFrame {
 	}
 	
 	
+	//Other methods:
+	
+	public void setProductsListToTable(ResultSet rs) {
+		this.tableProductsList.setModel(DbUtils.resultSetToTableModel(rs));
+	}
+	
+	public void addToOrderList() {
+		
+		
+		String id = textProductdId.getText();
+		String quantity = textProductQuantity.getText();
+		
+		model.addRow(new Object[]{id, quantity});
+	}
+	
+	public void displayMessage(String msg) {
+		JOptionPane.showMessageDialog(this,msg);
+	}
+	
+	public void clearTable() {
+		DefaultTableModel model = (DefaultTableModel) tableOrderList.getModel();
+		model.setRowCount(0);
+	}
 
 
 }
