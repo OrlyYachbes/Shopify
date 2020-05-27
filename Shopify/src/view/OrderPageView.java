@@ -6,6 +6,7 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
 
 import net.proteanit.sql.DbUtils;
@@ -35,6 +36,7 @@ public class OrderPageView extends JFrame {
 	private JTable tableProductsList;
 	private JTable tableOrderList;
 	private DefaultTableModel model;
+	private JButton btnRemove;
 
 	/**
 	 * Launch the application.
@@ -126,6 +128,10 @@ public class OrderPageView extends JFrame {
 		lblNewLabel_4.setBounds(378, 77, 84, 14);
 		contentPane.add(lblNewLabel_4);
 		
+		btnRemove = new JButton("Remove");
+		btnRemove.setBounds(507, 61, 89, 23);
+		contentPane.add(btnRemove);
+		
 		tableProductsList.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -134,6 +140,7 @@ public class OrderPageView extends JFrame {
 				
 				String id = tableProductsList.getModel().getValueAt(row, 0).toString();
 				textProductdId.setText(id);
+				textProductQuantity.setText("");
 			}
 		});
 	}
@@ -153,7 +160,12 @@ public class OrderPageView extends JFrame {
 		this.btnPlaceOrder.addActionListener(al);
 		this.btnAdd.addActionListener(al);
 		this.btnBack.addActionListener(al);
+		this.btnRemove.addActionListener(al);
 		
+	}
+	
+	public void addTextFieldAl(DocumentListener dl) {
+		this.textProductQuantity.getDocument().addDocumentListener(dl);
 	}
 
 	public JButton getBtnPlaceOrder() {
@@ -166,6 +178,9 @@ public class OrderPageView extends JFrame {
 
 	public JButton getBtnBack() {
 		return btnBack;
+	}
+	public JButton getBtnRemove() {
+		return btnRemove;
 	}
 	
 	
@@ -192,6 +207,21 @@ public class OrderPageView extends JFrame {
 		DefaultTableModel model = (DefaultTableModel) tableOrderList.getModel();
 		model.setRowCount(0);
 	}
+	
+	public void clearQuantityTextField(){
+		this.textProductQuantity.setText("");
+	}
+	
+	public void removeSelctedRowFromOrderList() {
+		
+		DefaultTableModel model = (DefaultTableModel) tableOrderList.getModel();
+		
+		try {
+			int row = tableOrderList.getSelectedRow();
+			model.removeRow(row);
+		}catch(Exception e){
+			
+		}
 
-
+	}
 }

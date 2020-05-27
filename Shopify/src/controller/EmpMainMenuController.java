@@ -23,18 +23,26 @@ public class EmpMainMenuController {
 		public void actionPerformed(ActionEvent e) {
 				
 			if(e.getSource() == view.getBtnProductsPage()) {
+				view.setVisible(false);
+				view.dispose();
 				model.moveToProductsPage();
 			}
 			
 			if(e.getSource() == view.getBtnOrdersPage()) {
+				view.setVisible(false);
+				view.dispose();
 				model.moveToOrdersPage();
 			}
 			
 			if(e.getSource() == view.getBtnChangePass()) {
+				view.setVisible(false);
+				view.dispose();
 				model.moveToChangePassPage();
 			}
 
 			if(e.getSource() == view.getBtnLogOut()) {
+				view.setVisible(false);
+				view.dispose();
 				model.moveToLogInPage();
 			}
 		}

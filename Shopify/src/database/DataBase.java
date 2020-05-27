@@ -45,11 +45,13 @@ public class DataBase {
              
              if (isEmpty) {
             	 rs.close();
+            	 conn.close();
             	 return false;
              }
              
              else {
             	 rs.close();
+            	 conn.close();
             	 return true;
              }
               
@@ -74,11 +76,13 @@ public class DataBase {
             
             if (isEmpty) {
            	 rs.close();
+           	 conn.close();
            	 return false;
             }
             
             else {
            	 rs.close();
+           	 conn.close();
            	 return true;
             }
              
@@ -99,7 +103,6 @@ public class DataBase {
                Connection conn = this.connect();  
                Statement stmt  = conn.createStatement();         
                ResultSet rs    = stmt.executeQuery(sql);  
-
                return rs;
                 
 
@@ -141,7 +144,9 @@ public class DataBase {
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setInt(1, quantity);
             pstmt.setString(2, id);
-            ResultSet rs = pstmt.executeQuery();
+            pstmt.executeUpdate();
+            pstmt.close();
+            conn.close();
 
             return true;
 
@@ -161,6 +166,7 @@ public class DataBase {
              Statement stmt  = conn.createStatement();  
              ResultSet rs    = stmt.executeQuery(sql);
              int quantity = rs.getInt("quantity");
+             conn.close();
 
             return quantity;
               

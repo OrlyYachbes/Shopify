@@ -3,6 +3,9 @@ package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
+
 import controller.ManagerMainMenuController.btnActionListener;
 import model.ManagerMainMenuModel;
 import model.OrderPageModel;
@@ -20,6 +23,7 @@ public class OrderPageController {
 		this.view = view;
 		this.model = model;
 		this.view.addBtnAl(new btnActionListener());
+		this.view.addTextFieldAl(new textFieldListener());
 		view.setProductsListToTable(model.getProductsList());
 	}
 	
@@ -39,6 +43,7 @@ public class OrderPageController {
 					
 					view.addToOrderList();
 					model.addToOrdersList(id, updatedQuantity);
+					view.clearQuantityTextField();
 				}
 				else {
 					view.displayMessage("Quantity equired is more than the supply!!");
@@ -52,8 +57,40 @@ public class OrderPageController {
 			}else if(e.getSource() == view.getBtnPlaceOrder()) {
 				model.addOrdersListToDb();
 				view.displayMessage("Order completed!");
+				view.setProductsListToTable(model.getProductsList());
 				
+			}else if(e.getSource() == view.getBtnRemove()) {
+				view.removeSelctedRowFromOrderList();
 			}
+			
+		}
+		
+	}
+	
+	class textFieldListener implements DocumentListener{
+
+		@Override
+		public void changedUpdate(DocumentEvent e) {
+			String quantity = view.getQuantity();
+			//need to fix
+			 try {  
+				    Double.parseDouble(quantity);  
+
+				  } catch(NumberFormatException e1){  
+				    view.displayMessage("Invalid input!");
+				  }  
+			
+		}
+
+		@Override
+		public void insertUpdate(DocumentEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void removeUpdate(DocumentEvent e) {
+			// TODO Auto-generated method stub
 			
 		}
 		

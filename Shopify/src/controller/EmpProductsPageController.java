@@ -26,6 +26,8 @@ public class EmpProductsPageController {
 		public void actionPerformed(ActionEvent e) {
 			
 			if(e.getSource() == view.getBtnBack()){
+				view.setVisible(false);
+				view.dispose();
 				model.moveToMainMenu();
 			}
 			
