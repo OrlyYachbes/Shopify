@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 
 import net.proteanit.sql.DbUtils;
 
@@ -59,7 +60,7 @@ public class OrderPageView extends JFrame {
 	 */
 	public OrderPageView() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 622, 448);
+		setBounds(100, 100, 886, 448);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -67,15 +68,15 @@ public class OrderPageView extends JFrame {
 		
 		JLabel lblNewLabel = new JLabel("Order Page");
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 27));
-		lblNewLabel.setBounds(228, 33, 166, 40);
+		lblNewLabel.setBounds(374, 30, 166, 40);
 		contentPane.add(lblNewLabel);
 		
 		btnAdd = new JButton("Add");
-		btnAdd.setBounds(491, 325, 105, 23);
+		btnAdd.setBounds(755, 325, 105, 23);
 		contentPane.add(btnAdd);
 		
 		btnPlaceOrder = new JButton("Place Order");
-		btnPlaceOrder.setBounds(491, 359, 105, 23);
+		btnPlaceOrder.setBounds(755, 359, 105, 23);
 		contentPane.add(btnPlaceOrder);
 		
 		btnBack = new JButton("Back");
@@ -84,32 +85,32 @@ public class OrderPageView extends JFrame {
 		
 		textProductdId = new JTextField();
 		textProductdId.setEditable(false);
-		textProductdId.setBounds(376, 326, 86, 20);
+		textProductdId.setBounds(640, 326, 86, 20);
 		contentPane.add(textProductdId);
 		textProductdId.setColumns(10);
 		
 		textProductQuantity = new JTextField();
-		textProductQuantity.setBounds(376, 360, 86, 20);
+		textProductQuantity.setBounds(640, 360, 86, 20);
 		contentPane.add(textProductQuantity);
 		textProductQuantity.setColumns(10);
 		
 		JLabel lblNewLabel_1 = new JLabel("Product Id:");
-		lblNewLabel_1.setBounds(375, 312, 70, 14);
+		lblNewLabel_1.setBounds(639, 312, 70, 14);
 		contentPane.add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_2 = new JLabel("Quantity:");
-		lblNewLabel_2.setBounds(376, 345, 69, 14);
+		lblNewLabel_2.setBounds(640, 345, 69, 14);
 		contentPane.add(lblNewLabel_2);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(22, 95, 303, 287);
+		scrollPane.setBounds(22, 95, 607, 287);
 		contentPane.add(scrollPane);
 		
 		tableProductsList = new JTable();
 		scrollPane.setViewportView(tableProductsList);
 		
 		JScrollPane scrollPane_1 = new JScrollPane();
-		scrollPane_1.setBounds(376, 95, 220, 206);
+		scrollPane_1.setBounds(640, 95, 220, 206);
 		contentPane.add(scrollPane_1);
 		
 		model = new DefaultTableModel(); 
@@ -125,11 +126,11 @@ public class OrderPageView extends JFrame {
 		contentPane.add(lblNewLabel_3);
 		
 		JLabel lblNewLabel_4 = new JLabel("Order List:");
-		lblNewLabel_4.setBounds(378, 77, 84, 14);
+		lblNewLabel_4.setBounds(642, 77, 84, 14);
 		contentPane.add(lblNewLabel_4);
 		
 		btnRemove = new JButton("Remove");
-		btnRemove.setBounds(507, 61, 89, 23);
+		btnRemove.setBounds(771, 61, 89, 23);
 		contentPane.add(btnRemove);
 		
 		tableProductsList.addMouseListener(new MouseAdapter() {
@@ -152,6 +153,11 @@ public class OrderPageView extends JFrame {
 	
 	public String getQuantity() {
 		return textProductQuantity.getText();
+	}
+	
+	public String getIdFromOrder() {
+		int row = tableOrderList.getSelectedRow();
+		return tableOrderList.getModel().getValueAt(row, 0).toString();
 	}
 	
 	//Methods:
@@ -188,6 +194,12 @@ public class OrderPageView extends JFrame {
 	
 	public void setProductsListToTable(ResultSet rs) {
 		this.tableProductsList.setModel(DbUtils.resultSetToTableModel(rs));
+		this.tableProductsList.getColumnModel().getColumn(1).setPreferredWidth(93);
+		this.tableProductsList.getColumnModel().getColumn(6).setPreferredWidth(97);
+		this.tableProductsList.getColumnModel().getColumn(2).setPreferredWidth(50);
+		this.tableProductsList.getColumnModel().getColumn(7).setPreferredWidth(50);
+		this.tableProductsList.getColumnModel().getColumn(8).setPreferredWidth(50);
+		this.tableProductsList.getColumnModel().getColumn(9).setPreferredWidth(97);
 	}
 	
 	public void addToOrderList() {
@@ -223,5 +235,32 @@ public class OrderPageView extends JFrame {
 			
 		}
 
+	}
+	
+	public boolean quantityValidationCheck() {
+		String quantity = this.getQuantity();
+		
+		try {
+			int num = Integer.parseInt(quantity);
+			if(num >= 0) {
+				return true;
+			}else
+				return false;
+		}catch(Exception e) {
+			return false;
+		}
+			 
+	}
+	
+	public void removeDuplicatesFromOrderTable(String id) {
+		int rowCount = tableOrderList.getRowCount();
+		TableModel model = tableOrderList.getModel();
+		DefaultTableModel modelToRemoveFrom = (DefaultTableModel)tableOrderList.getModel();
+		for(int i=0; i<rowCount; i++) {
+			if(model.getValueAt(i, 0).toString().equals(id)) {
+				modelToRemoveFrom.removeRow(i);
+				return;
+			}
+		}
 	}
 }

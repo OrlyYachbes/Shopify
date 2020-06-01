@@ -48,7 +48,7 @@ public class EmpProductsPageView extends JFrame {
 	 */
 	public EmpProductsPageView() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 622, 448);
+		setBounds(100, 100, 786, 448);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -77,7 +77,7 @@ public class EmpProductsPageView extends JFrame {
 		contentPane.add(btnSearch);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(78, 124, 452, 252);
+		scrollPane.setBounds(80, 140, 607, 230);
 		contentPane.add(scrollPane);
 		
 		table = new JTable();
@@ -110,6 +110,12 @@ public class EmpProductsPageView extends JFrame {
 	
 	public void setProductsListToTable(ResultSet rs) {
 		this.table.setModel(DbUtils.resultSetToTableModel(rs));
+		this.table.getColumnModel().getColumn(1).setPreferredWidth(93);
+		this.table.getColumnModel().getColumn(6).setPreferredWidth(97);
+		this.table.getColumnModel().getColumn(2).setPreferredWidth(50);
+		this.table.getColumnModel().getColumn(7).setPreferredWidth(50);
+		this.table.getColumnModel().getColumn(8).setPreferredWidth(50);
+		this.table.getColumnModel().getColumn(9).setPreferredWidth(97);
 	}
 	
 }
