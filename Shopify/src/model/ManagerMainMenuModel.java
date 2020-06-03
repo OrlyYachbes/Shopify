@@ -13,8 +13,8 @@ public class ManagerMainMenuModel {
 		this.fm = FrameManager.getInstance();
 	}
 	
-	public void moveToProductsPage() {
-		fm.moveToEmpProductsPage();
+	public void moveToManagerProductsPage() {
+		fm.moveToManagerProductsPage();
 	}
 	
 	public void moveToOrdersPage() {

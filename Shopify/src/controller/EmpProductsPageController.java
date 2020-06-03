@@ -35,7 +35,6 @@ public class EmpProductsPageController {
 				
 				String id = view.getSearchText();
 				
-				//need to render the list in listView!!
 				view.setProductsListToTable(model.getProductsListById(id));
 			}
 		}

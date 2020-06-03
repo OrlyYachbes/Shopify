@@ -24,7 +24,7 @@ public class OrderPageModel {
 	}
 	
 	public void moveToMainMenu() {
-		fm.moveToMainMenu();
+		fm.moveToMainMenuPage();
 	}
 	
 	public void addToOrdersList(String id, int quantity) {

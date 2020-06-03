@@ -7,6 +7,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import util.Item;
+
 public class DataBase {
     private static DataBase dataBase_instance = null;
     private DataBase(){};
@@ -177,6 +179,93 @@ public class DataBase {
         
         return 0;
     } 
+    
+    
+    public boolean deleteItem(String id){  
+    	String sql = "DELETE FROM item WHERE item_id = ?";
+    	
+
+         try {  
+             Connection conn = this.connect();  
+             PreparedStatement pstmt = conn.prepareStatement(sql);
+             pstmt.setString(1, id);
+             pstmt.executeUpdate();
+             conn.close();
+
+            return true;
+              
+
+        } catch (SQLException e) {  
+            System.out.println(e.getMessage());  
+        }  
+        
+        return false;
+    } 
+    
+    public boolean addItem(Item item){  
+    	//FIX:
+   	String sql = "INSERT INTO item(item_id, item_name, price, quantity, category, sleeve, neck_shape, size, form, is_goldfilled)"
+   			+ "VALUES(?,?,?,?,?,?,?,?,?,?)";
+
+         try {  
+             Connection conn = this.connect();  
+             PreparedStatement pstmt = conn.prepareStatement(sql);
+             pstmt.setString(1, item.getItemId());
+             pstmt.setString(2, item.getItemName());
+             pstmt.setInt(3, item.getPrice());
+             pstmt.setInt(4, item.getQuantity());
+             pstmt.setString(5, item.getCategory());
+             pstmt.setString(6, item.getSleeve());
+             pstmt.setString(7, item.getNeck_shape());
+             pstmt.setInt(8, item.getSize());
+             pstmt.setString(9, item.getForm());
+             pstmt.setBoolean(10, item.getIsGoldfilled());
+             
+             pstmt.executeUpdate();
+             conn.close();
+
+            return true;
+              
+
+        } catch (SQLException e) {  
+            System.out.println(e.getMessage());  
+        }  
+        
+        return false;
+    } 
+    
+    public boolean updateItem(Item item, String id){  
+    	//FIX:
+   	String sql = "UPDATE item SET item_name = ?, price = ?, quantity = ?, category = ?, sleeve = ?, "
+   			+ "neck_shape = ?, size = ?, form =?, is_goldfilled = ? WHERE item_id = ?";
+   			
+
+         try {  
+             Connection conn = this.connect();  
+             PreparedStatement pstmt = conn.prepareStatement(sql);
+             pstmt.setString(1, item.getItemName());
+             pstmt.setInt(2, item.getPrice());
+             pstmt.setInt(3, item.getQuantity());
+             pstmt.setString(4, item.getCategory());
+             pstmt.setString(5, item.getSleeve());
+             pstmt.setString(6, item.getNeck_shape());
+             pstmt.setInt(7, item.getSize());
+             pstmt.setString(8, item.getForm());
+             pstmt.setBoolean(9, item.getIsGoldfilled());
+             pstmt.setString(10, item.getItemId());
+             pstmt.executeUpdate();
+             conn.close();
+
+            return true;
+              
+
+        } catch (SQLException e) {  
+            System.out.println(e.getMessage());  
+        }  
+        
+        return false;
+    } 
+    
     
     
 }

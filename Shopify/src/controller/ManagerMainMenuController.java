@@ -26,7 +26,7 @@ public class ManagerMainMenuController {
 			if(e.getSource() == view.getBtnProductPage()) {
 				view.setVisible(false);
 				view.dispose();
-				model.moveToProductsPage();
+				model.moveToManagerProductsPage();
 			}
 			
 			if(e.getSource() == view.getBtnOrderPage()) {
