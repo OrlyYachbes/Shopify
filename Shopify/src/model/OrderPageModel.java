@@ -42,6 +42,10 @@ public class OrderPageModel {
 		 
 		return true;
 	}
+	
+	public void removeFromOrderList(String id) {
+		this.ordersMap.remove(id);
+	}
 		
 
 	

@@ -58,11 +58,11 @@ public class ManagerMainMenuView extends JFrame {
 		contentPane.add(btnProductPage);
 		
 		btnOrderPage = new JButton("Order Page");
-		btnOrderPage.setBounds(355, 341, 89, 23);
+		btnOrderPage.setBounds(336, 341, 118, 23);
 		contentPane.add(btnOrderPage);
 		
 		btnChangePass = new JButton("Change Pass");
-		btnChangePass.setBounds(222, 341, 105, 23);
+		btnChangePass.setBounds(180, 341, 133, 23);
 		contentPane.add(btnChangePass);
 		
 		btnEditUser = new JButton("Edit User");

@@ -62,7 +62,7 @@ public class EmpMainMenuView extends JFrame {
 		contentPane.add(btnOrdersPage);
 		
 		btnChangePass = new JButton("Change Password");
-		btnChangePass.setBounds(72, 332, 118, 23);
+		btnChangePass.setBounds(72, 332, 139, 23);
 		contentPane.add(btnChangePass);
 		
 		btnLogOut = new JButton("Log Out");

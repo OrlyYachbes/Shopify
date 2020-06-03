@@ -34,13 +34,17 @@ public class OrderPageController {
 			
 			if(e.getSource() == view.getBtnAdd()) {
 				
+				if(!view.quantityValidationCheck()) {
+					view.displayMessage("Input is invalid!");
+					return;
+				}
 				String id = view.getId();
 				int quantity = Integer.parseInt(view.getQuantity());
 				int currentQuantity = model.getItemQuantity(id);
 				int updatedQuantity = currentQuantity - quantity;
 				
-				if(quantity < currentQuantity) {
-					
+				if(quantity <= currentQuantity) {
+					view.removeDuplicatesFromOrderTable(id);
 					view.addToOrderList();
 					model.addToOrdersList(id, updatedQuantity);
 					view.clearQuantityTextField();
@@ -58,8 +62,10 @@ public class OrderPageController {
 				model.addOrdersListToDb();
 				view.displayMessage("Order completed!");
 				view.setProductsListToTable(model.getProductsList());
+				view.clearTable();
 				
 			}else if(e.getSource() == view.getBtnRemove()) {
+				model.removeFromOrderList(view.getIdFromOrder());
 				view.removeSelctedRowFromOrderList();
 			}
 			
