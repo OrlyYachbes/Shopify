@@ -1,9 +1,9 @@
 package view;
-
 import java.awt.BorderLayout;
 import java.awt.Checkbox;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -23,22 +23,10 @@ import net.proteanit.sql.DbUtils;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 
-/**
- * @author mazal
- *
- */
-/**
- * @author mazal
- *
- */
-/**
- * @author mazal
- *
- */
+
 public class ManagerProductsPageView extends JFrame {
 
-
-	private JPanel contentPane;
+    private JPanel contentPane;
 	private JButton btnBack;
 	private JTextField textSearch;
 	private JButton btnSearch;
@@ -200,6 +188,7 @@ public class ManagerProductsPageView extends JFrame {
 		CheckBoxGoldFilled.setBounds(482, 368, 97, 23);
 		contentPane.add(CheckBoxGoldFilled);
 		
+		
 		comboBoxCategory = new JComboBox();
 		comboBoxCategory.setBounds(482, 183, 86, 20);
 		contentPane.add(comboBoxCategory);
@@ -236,21 +225,23 @@ public class ManagerProductsPageView extends JFrame {
 			public void mouseExited(MouseEvent e) {
 				// TODO Auto-generated method stub
 				
+				
 			}
 			
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				// TODO Auto-generated method stub
 				
+				
 			}
 			
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
-				int row = table.getSelectedRow();
 				
-				String id = table.getModel().getValueAt(row, 0).toString();
-				textFieldItemId.setText(id);
+				int row = table.getSelectedRow(); 
+				String id = table.getModel().getValueAt(row, 0).toString(); 
+				textFieldItemId.setText(id); 
 				String name = table.getModel().getValueAt(row, 1).toString();
 				textFieldItemName.setText(name);
 				String price = table.getModel().getValueAt(row, 2).toString();
@@ -294,29 +285,27 @@ public class ManagerProductsPageView extends JFrame {
 					isGoldFilled = table.getModel().getValueAt(row, 9).toString().equals("1");
 				}
 				CheckBoxGoldFilled.setSelected(isGoldFilled);
-				
-				
-				
-				
-				
+		
 				
 			}
 		});
 	}
-	
+
+
 	//Action Listeners:
-	
-	public void addBtnActionListner(ActionListener al) {
+	public void addBtnActionListner(ActionListener al) { 
 		this.btnBack.addActionListener(al);
 		this.btnSearch.addActionListener(al);
 		this.btnAdd.addActionListener(al);
 		this.btnDelete.addActionListener(al);
 		this.btnUpdate.addActionListener(al);
+	
 	}
+
 	
 	//Getters and setters:
 	
-
+    
 	public JButton getBtnBack() {
 		return btnBack;
 	}
@@ -346,6 +335,8 @@ public class ManagerProductsPageView extends JFrame {
 		return textSearch.getText();
 	}
 
+	
+	
 	public String getTextFieldItemId() {
 		return textFieldItemId.getText();
 	}

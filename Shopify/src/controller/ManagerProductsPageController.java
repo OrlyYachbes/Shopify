@@ -3,6 +3,8 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import model.ManagerProductsPageModel;
 import util.Item;
@@ -11,13 +13,13 @@ import view.ManagerProductsPageView;
 public class ManagerProductsPageController {
 	private ManagerProductsPageView view;
 	private ManagerProductsPageModel model;
-	
+
 	public ManagerProductsPageController(ManagerProductsPageView view, ManagerProductsPageModel model)
 	{
 		this.view = view;
 		this.model = model;
-		view.addBtnActionListner(new BtnActionListener());
 		
+		view.addBtnActionListner(new BtnActionListener());
 		view.setProductsListToTable(model.getProductsList());
 
 	}
@@ -38,7 +40,21 @@ public class ManagerProductsPageController {
 				
 				String id = view.getSearchText();
 				
-				view.setProductsListToTable(model.getProductsListById(id));
+				ResultSet rs = model.getProductsListById(id);
+				
+				boolean isEmpty = false;
+				try {
+					isEmpty = !rs.isBeforeFirst();
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				if(isEmpty) {
+					view.displayMassage("Product not found");
+				}else {
+					view.setProductsListToTable(rs);
+				}
+				
 			}
 			
 			else if(e.getSource() == view.getBtnDelete()) {
