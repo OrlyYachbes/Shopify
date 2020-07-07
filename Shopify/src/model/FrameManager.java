@@ -4,13 +4,17 @@ import controller.EmpMainMenuController;
 import controller.EmpMainMenuController;
 import controller.EmpProductsPageController;
 import controller.LogInController;
+//import controller.ManagerEmployeesPageController;
 import controller.ManagerMainMenuController;
+import controller.ManagerProductsPageController;
 //import controller.ManagerProductsPageController;
 import controller.OrderPageController;
 import view.EmpMainMenuView;
 import view.EmpProductsPageView;
 import view.LogInView;
+//import view.ManagerEmployeesPageView;
 import view.ManagerMainMenuView;
+import view.ManagerProductsPageView;
 //import view.ManagerProductsPageView;
 import view.OrderPageView;
 
@@ -68,17 +72,21 @@ public class FrameManager {
     }
     
     public void moveToManagerProductsPage(){
-//    	ManagerProductsPageView view = new ManagerProductsPageView();
-//    	ManagerProductsPageModel model = new ManagerProductsPageModel();
-//    	new ManagerProductsPageController(view, model);
-//    	view.setVisible(true);
+    	ManagerProductsPageView view = new ManagerProductsPageView();
+    	ManagerProductsPageModel model = new ManagerProductsPageModel();
+    	new ManagerProductsPageController(view, model);
+    	view.setVisible(true);
     }
     
-    public void moveToManageEmpPage(){}
+//    public void moveToManageEmpPage(){
+//    	ManagerEmployeesPageView view = new ManagerEmployeesPageView();
+//    	ManagerEmployeesPageModel model = new ManagerEmployeesPageModel();
+//    	new ManagerEmployeesPageController(view, model);
+//    	view.setVisible(true);
+//    }
     
-    public void moveToChangePasswordPage(){}
     
-    public void moveToMainMenu() {
+    public void moveToMainMenuPage() {
     	if(this.manager) {
     		this.moveToManagerMainMenuPage();
     	}

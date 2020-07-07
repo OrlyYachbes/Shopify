@@ -13,23 +13,20 @@ public class ManagerMainMenuModel {
 		this.fm = FrameManager.getInstance();
 	}
 	
-	public void moveToProductsPage() {
-		fm.moveToEmpProductsPage();
+	public void moveToManagerProductsPage() {
+		fm.moveToManagerProductsPage();
 	}
 	
 	public void moveToOrdersPage() {
 		fm.moveToOrderPage();
 	}
 	
-	public void moveToChangePassPage() {
-		fm.moveToChangePasswordPage();
-	}
 	
 	public void moveToLogInPage() {
 		fm.moveToLoginPage();
 	}
 	
 	public void moveToEditUserPage() {
-		fm.moveToManageEmpPage();
+//		fm.moveToManageEmpPage();
 	}
 }

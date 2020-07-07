@@ -18,7 +18,6 @@ public class EmpMainMenuView extends JFrame {
 	private JPanel contentPane;
 	private JButton btnProductsPage;
 	private JButton btnOrdersPage;
-	private JButton btnChangePass;
 	private JButton btnLogOut;
 
 	/**
@@ -54,16 +53,12 @@ public class EmpMainMenuView extends JFrame {
 		contentPane.add(lblNewLabel);
 		
 		btnProductsPage = new JButton("Products Page");
-		btnProductsPage.setBounds(445, 332, 118, 23);
+		btnProductsPage.setBounds(369, 332, 118, 23);
 		contentPane.add(btnProductsPage);
 		
 		btnOrdersPage = new JButton("Orders Page");
-		btnOrdersPage.setBounds(257, 332, 118, 23);
+		btnOrdersPage.setBounds(157, 332, 118, 23);
 		contentPane.add(btnOrdersPage);
-		
-		btnChangePass = new JButton("Change Password");
-		btnChangePass.setBounds(72, 332, 139, 23);
-		contentPane.add(btnChangePass);
 		
 		btnLogOut = new JButton("Log Out");
 		btnLogOut.setBounds(10, 11, 89, 23);
@@ -76,7 +71,6 @@ public class EmpMainMenuView extends JFrame {
 		
 		this.btnProductsPage.addActionListener(al);
 		this.btnOrdersPage.addActionListener(al);
-		this.btnChangePass.addActionListener(al);
 		this.btnLogOut.addActionListener(al);	
 		
 	}
@@ -89,9 +83,6 @@ public class EmpMainMenuView extends JFrame {
 		return btnOrdersPage;
 	}
 
-	public JButton getBtnChangePass() {
-		return btnChangePass;
-	}
 
 	public JButton getBtnLogOut() {
 		return btnLogOut;

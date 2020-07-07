@@ -3,13 +3,14 @@ package model;
 import java.sql.ResultSet;
 
 import database.DataBase;
+import util.Item;
 
-public class EmpProductsPageModel {
+public class ManagerProductsPageModel {
 	
 	private DataBase db;
 	private FrameManager fm;
 	
-	public EmpProductsPageModel(){
+	public ManagerProductsPageModel(){
 		db = DataBase.getInstance();
 		fm = FrameManager.getInstance();
 	}
@@ -24,6 +25,19 @@ public class EmpProductsPageModel {
 	public ResultSet getProductsListById(String id) {
 		return db.getProductById(id);
 		
+	}
+	
+	public boolean deleteItem(String id) {
+		return db.deleteItem(id);
+		
+	}
+	
+	public boolean addItem(Item item) {
+		return db.addItem(item);
+	}
+	
+	public boolean updateItem(Item item, String id) {
+		return db.updateItem(item, id);
 	}
 	
 	public void moveToMainMenu() {

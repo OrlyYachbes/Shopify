@@ -17,7 +17,6 @@ public class ManagerMainMenuView extends JFrame {
 	private JPanel contentPane;
 	private JButton btnProductPage;
 	private JButton btnOrderPage;
-	private JButton btnChangePass;
 	private JButton btnEditUser;
 	private JButton btnLogOut;
 
@@ -54,19 +53,15 @@ public class ManagerMainMenuView extends JFrame {
 		contentPane.add(lblNewLabel);
 		
 		btnProductPage = new JButton("Product Page");
-		btnProductPage.setBounds(478, 341, 118, 23);
+		btnProductPage.setBounds(434, 341, 118, 23);
 		contentPane.add(btnProductPage);
 		
 		btnOrderPage = new JButton("Order Page");
-		btnOrderPage.setBounds(336, 341, 118, 23);
+		btnOrderPage.setBounds(254, 341, 118, 23);
 		contentPane.add(btnOrderPage);
 		
-		btnChangePass = new JButton("Change Pass");
-		btnChangePass.setBounds(180, 341, 133, 23);
-		contentPane.add(btnChangePass);
-		
 		btnEditUser = new JButton("Edit User");
-		btnEditUser.setBounds(66, 341, 89, 23);
+		btnEditUser.setBounds(91, 341, 89, 23);
 		contentPane.add(btnEditUser);
 		
 		btnLogOut = new JButton("Log Out");
@@ -80,7 +75,6 @@ public class ManagerMainMenuView extends JFrame {
 		
 		this.btnProductPage.addActionListener(al);
 		this.btnOrderPage.addActionListener(al);
-		this.btnChangePass.addActionListener(al);
 		this.btnLogOut.addActionListener(al);	
 		this.btnEditUser.addActionListener(al);
 	}
@@ -93,9 +87,6 @@ public class ManagerMainMenuView extends JFrame {
 		return btnOrderPage;
 	}
 
-	public JButton getBtnChangePass() {
-		return btnChangePass;
-	}
 
 	public JButton getBtnEditUser() {
 		return btnEditUser;
