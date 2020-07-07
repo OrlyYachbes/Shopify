@@ -17,11 +17,11 @@ public class LogInModel {
 		
 		if(db.selectManager(userId, password)) {
 			fm.setManager(true);
-			fm.moveToEmpMainMenuPage();
+			fm.moveToMainMenu();
 			return true;
 		} else if(db.selectEmployee(userId, password)) {
 			fm.setManager(false);
-			fm.moveToEmpMainMenuPage();
+			fm.moveToMainMenu();
 			return true;
 		} else
 			return false;
