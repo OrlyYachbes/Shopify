@@ -44,5 +44,10 @@ public class ManagerProductsPageModel {
 		fm.moveToMainMenuPage();
 	}
 	
+	public boolean isItemExist(String id) {
+		return db.isItem(id);
+	}
+	
+	
 
 }

@@ -402,6 +402,73 @@ public class DataBase {
     } 
     
     
+    public boolean isEmployee(String id){  
+    	String sql = "SELECT * FROM employee where id = " + id; 
+    	 
+
+         try {  
+             Connection conn = this.connect();  
+             Statement stmt  = conn.createStatement();  
+             ResultSet rs    = stmt.executeQuery(sql);  
+
+             boolean isEmpty = !rs.isBeforeFirst();
+             
+             if (isEmpty) {
+            	 rs.close();
+            	 conn.close();
+            	 return false;
+             }
+             
+             else {
+            	 rs.close();
+            	 conn.close();
+            	 return true;
+             }
+              
+
+        } catch (SQLException e) {  
+            System.out.println(e.getMessage());  
+        }  
+        
+        return false;
+    }
+    
+    public boolean isItem(String id){  
+    	String sql = "SELECT * FROM item where item_id = " + id; 
+    	 
+
+         try {  
+             Connection conn = this.connect();  
+             Statement stmt  = conn.createStatement();  
+             ResultSet rs    = stmt.executeQuery(sql);  
+
+             boolean isEmpty = !rs.isBeforeFirst();
+             
+             if (isEmpty) {
+            	 rs.close();
+            	 conn.close();
+            	 return false;
+             }
+             
+             else {
+            	 rs.close();
+            	 conn.close();
+            	 return true;
+             }
+              
+
+        } catch (SQLException e) {  
+            System.out.println(e.getMessage());  
+        }  
+        
+        return false;
+    }
+    
+    //Test methods:
+    
+    
+    
+    
     
     
 }

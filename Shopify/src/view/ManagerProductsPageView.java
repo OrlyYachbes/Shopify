@@ -66,7 +66,7 @@ public class ManagerProductsPageView extends JFrame {
 	 */
 	public ManagerProductsPageView() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 622, 448);
+		setBounds(100, 100, 786, 448);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -77,127 +77,127 @@ public class ManagerProductsPageView extends JFrame {
 		contentPane.add(btnBack);
 		
 		textSearch = new JTextField();
-		textSearch.setBounds(150, 88, 146, 20);
+		textSearch.setBounds(224, 88, 146, 20);
 		contentPane.add(textSearch);
 		textSearch.setColumns(10);
 		
 		JLabel lblNewLabel = new JLabel("Products Page");
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 27));
-		lblNewLabel.setBounds(204, 11, 227, 41);
+		lblNewLabel.setBounds(259, 11, 227, 41);
 		contentPane.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("Enter Product ID:");
-		lblNewLabel_1.setBounds(150, 63, 129, 14);
+		lblNewLabel_1.setBounds(224, 63, 129, 14);
 		contentPane.add(lblNewLabel_1);
 		
 		btnSearch = new JButton("Search");
-		btnSearch.setBounds(323, 87, 89, 23);
+		btnSearch.setBounds(397, 87, 89, 23);
 		contentPane.add(btnSearch);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(25, 125, 401, 252);
+		scrollPane.setBounds(25, 125, 632, 242);
 		contentPane.add(scrollPane);
 		
 		table = new JTable();
 		scrollPane.setViewportView(table);
 		
 		textFieldItemId = new JTextField();
-		textFieldItemId.setBounds(482, 22, 86, 20);
+		textFieldItemId.setBounds(667, 26, 86, 20);
 		contentPane.add(textFieldItemId);
 		textFieldItemId.setColumns(10);
 		
 		textFieldItemName = new JTextField();
-		textFieldItemName.setBounds(482, 63, 86, 20);
+		textFieldItemName.setBounds(667, 67, 86, 20);
 		contentPane.add(textFieldItemName);
 		textFieldItemName.setColumns(10);
 		
 		textFieldPrice = new JTextField();
-		textFieldPrice.setBounds(482, 105, 86, 20);
+		textFieldPrice.setBounds(667, 109, 86, 20);
 		contentPane.add(textFieldPrice);
 		textFieldPrice.setColumns(10);
 		
 		textFieldQuantity = new JTextField();
-		textFieldQuantity.setBounds(482, 143, 86, 20);
+		textFieldQuantity.setBounds(667, 147, 86, 20);
 		contentPane.add(textFieldQuantity);
 		textFieldQuantity.setColumns(10);
 		
 		textFieldNeckShape = new JTextField();
-		textFieldNeckShape.setBounds(482, 266, 86, 20);
+		textFieldNeckShape.setBounds(667, 270, 86, 20);
 		contentPane.add(textFieldNeckShape);
 		textFieldNeckShape.setColumns(10);
 		
 		JLabel lblNewLabel_2 = new JLabel("Name:");
-		lblNewLabel_2.setBounds(482, 46, 46, 14);
+		lblNewLabel_2.setBounds(667, 50, 46, 14);
 		contentPane.add(lblNewLabel_2);
 		
 		JLabel lblNewLabel_3 = new JLabel("Id:");
-		lblNewLabel_3.setBounds(482, 7, 46, 14);
+		lblNewLabel_3.setBounds(667, 11, 46, 14);
 		contentPane.add(lblNewLabel_3);
 		
 		JLabel lblNewLabel_4 = new JLabel("Price:");
-		lblNewLabel_4.setBounds(482, 87, 46, 14);
+		lblNewLabel_4.setBounds(667, 91, 46, 14);
 		contentPane.add(lblNewLabel_4);
 		
 		JLabel lblNewLabel_5 = new JLabel("Quantity:");
-		lblNewLabel_5.setBounds(482, 125, 46, 14);
+		lblNewLabel_5.setBounds(667, 129, 46, 14);
 		contentPane.add(lblNewLabel_5);
 		
 		JLabel lblNewLabel_6 = new JLabel("Category:");
-		lblNewLabel_6.setBounds(482, 168, 65, 14);
+		lblNewLabel_6.setBounds(667, 172, 65, 14);
 		contentPane.add(lblNewLabel_6);
 		
 		JLabel lblNewLabel_7 = new JLabel("Sleeve:");
-		lblNewLabel_7.setBounds(482, 205, 46, 14);
+		lblNewLabel_7.setBounds(667, 209, 46, 14);
 		contentPane.add(lblNewLabel_7);
 		
 		JLabel lblNewLabel_8 = new JLabel("Neck Shape:");
-		lblNewLabel_8.setBounds(482, 252, 86, 14);
+		lblNewLabel_8.setBounds(667, 256, 86, 14);
 		contentPane.add(lblNewLabel_8);
 		
 		textFieldSize = new JTextField();
-		textFieldSize.setBounds(482, 303, 86, 20);
+		textFieldSize.setBounds(667, 307, 86, 20);
 		contentPane.add(textFieldSize);
 		textFieldSize.setColumns(10);
 		
 		JLabel lblNewLabel_9 = new JLabel("Size:");
-		lblNewLabel_9.setBounds(482, 288, 46, 14);
+		lblNewLabel_9.setBounds(667, 292, 46, 14);
 		contentPane.add(lblNewLabel_9);
 		
 		textFieldForm = new JTextField();
-		textFieldForm.setBounds(482, 341, 86, 20);
+		textFieldForm.setBounds(667, 345, 86, 20);
 		contentPane.add(textFieldForm);
 		textFieldForm.setColumns(10);
 		
 		JLabel lblNewLabel_11 = new JLabel("Form:");
-		lblNewLabel_11.setBounds(483, 325, 46, 14);
+		lblNewLabel_11.setBounds(668, 329, 46, 14);
 		contentPane.add(lblNewLabel_11);
 		
 		btnAdd = new JButton("Add");
-		btnAdd.setBounds(25, 384, 89, 23);
+		btnAdd.setBounds(139, 378, 89, 23);
 		contentPane.add(btnAdd);
 		
 		btnUpdate = new JButton("Update");
-		btnUpdate.setBounds(185, 384, 89, 23);
+		btnUpdate.setBounds(299, 378, 89, 23);
 		contentPane.add(btnUpdate);
 		
 		btnDelete = new JButton("Delete");
-		btnDelete.setBounds(336, 384, 89, 23);
+		btnDelete.setBounds(450, 378, 89, 23);
 		contentPane.add(btnDelete);
 		
 		CheckBoxGoldFilled = new JCheckBox("Is Goldfilled");
-		CheckBoxGoldFilled.setBounds(482, 368, 97, 23);
+		CheckBoxGoldFilled.setBounds(667, 372, 97, 23);
 		contentPane.add(CheckBoxGoldFilled);
 		
 		
 		comboBoxCategory = new JComboBox();
-		comboBoxCategory.setBounds(482, 183, 86, 20);
+		comboBoxCategory.setBounds(667, 187, 86, 20);
 		contentPane.add(comboBoxCategory);
 		comboBoxCategory.addItem("Pants");
 		comboBoxCategory.addItem("Shirt");
 		comboBoxCategory.addItem("Accessories");
 		
 		comboBoxSleeve = new JComboBox();
-		comboBoxSleeve.setBounds(482, 221, 86, 20);
+		comboBoxSleeve.setBounds(667, 225, 86, 20);
 		contentPane.add(comboBoxSleeve);
 		comboBoxSleeve.addItem("1/2");
 		comboBoxSleeve.addItem("3/4");
@@ -345,20 +345,20 @@ public class ManagerProductsPageView extends JFrame {
 		return textFieldItemName.getText();
 	}
 
-	public int getTextFieldPrice() {
-		return Integer.valueOf(textFieldPrice.getText());
+	public String getTextFieldPrice() {
+		return textFieldPrice.getText();
 	}
 
-	public int getTextFieldQuantity() {
-		return Integer.valueOf(textFieldQuantity.getText());
+	public String getTextFieldQuantity() {
+		return textFieldQuantity.getText();
 	}
 
 	public String getTextFieldNeckShape() {
 		return textFieldNeckShape.getText();
 	}
 
-	public int getTextFieldSize() {
-		return Integer.valueOf(textFieldSize.getText());
+	public String getTextFieldSize() {
+		return textFieldSize.getText();
 	}
 
 	public String getTextFieldForm() {

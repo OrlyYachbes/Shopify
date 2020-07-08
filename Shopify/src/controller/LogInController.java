@@ -23,6 +23,11 @@ public class LogInController {
 			String userName = view.getUserName();
 			String pass = view.getPass();
 			
+			if(userName.trim().equals("") || pass.trim().equals("")) {
+				view.displayMessage("You must enter a value for both username and password");
+				return;
+			}
+			
 			
 		if(model.logIn(userName, pass) == false) {
 				view.displayMessage("User name or password is incorrect");

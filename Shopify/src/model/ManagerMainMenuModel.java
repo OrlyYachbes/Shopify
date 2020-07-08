@@ -21,9 +21,6 @@ public class ManagerMainMenuModel {
 		fm.moveToOrderPage();
 	}
 	
-	public void moveToChangePassPage() {
-		fm.moveToChangePasswordPage();
-	}
 	
 	public void moveToLogInPage() {
 		fm.moveToLoginPage();

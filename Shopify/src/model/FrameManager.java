@@ -5,6 +5,7 @@ import controller.EmpMainMenuController;
 import controller.EmpProductsPageController;
 import controller.LogInController;
 import controller.ManagerEmployeesPageController;
+//import controller.ManagerEmployeesPageController;
 import controller.ManagerMainMenuController;
 import controller.ManagerProductsPageController;
 //import controller.ManagerProductsPageController;
@@ -13,6 +14,7 @@ import view.EmpMainMenuView;
 import view.EmpProductsPageView;
 import view.LogInView;
 import view.ManagerEmployeesPageView;
+//import view.ManagerEmployeesPageView;
 import view.ManagerMainMenuView;
 import view.ManagerProductsPageView;
 //import view.ManagerProductsPageView;
@@ -85,7 +87,6 @@ public class FrameManager {
     	view.setVisible(true);
     }
     
-    public void moveToChangePasswordPage(){}
     
     public void moveToMainMenuPage() {
     	if(this.manager) {

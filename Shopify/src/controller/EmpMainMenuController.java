@@ -34,11 +34,6 @@ public class EmpMainMenuController {
 				model.moveToOrdersPage();
 			}
 			
-			if(e.getSource() == view.getBtnChangePass()) {
-				view.setVisible(false);
-				view.dispose();
-				model.moveToChangePassPage();
-			}
 
 			if(e.getSource() == view.getBtnLogOut()) {
 				view.setVisible(false);

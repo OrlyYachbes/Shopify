@@ -43,5 +43,11 @@ public class ManagerEmployeesPageModel {
 		fm.moveToMainMenuPage();
 	}
 	
+	public boolean isEmpExist(String id) {
+		return db.isEmployee(id);
+	}
+	
+	
+	
 
 }

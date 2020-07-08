@@ -59,6 +59,16 @@ public class ManagerEmployeesPageController {
 			}
 			
 			else if(e.getSource() == view.getBtnDelete()) {
+				String id = view.getTextFieldEmpId();
+				if(id.trim().equals("")) {
+					view.displayMassage("Id cann't be empty.");
+					return;
+				}
+				if(!model.isEmpExist(id)) {
+					view.displayMassage("Employee does'nt exist.");
+					return;
+				}
+				
 				if(model.deleteEmp(view.getTextFieldEmpId())) {
 					view.setEmployeesListToTable(model.getEmployeesList());
 					view.displayMassage("Employee Deleted!");
@@ -71,7 +81,9 @@ public class ManagerEmployeesPageController {
 			else if(e.getSource() == view.getBtnAdd()) {
 				
 			    Employee emp = new Employee();
-				initialEmp(emp);			
+				if(!initialEmp(emp)) {
+					return;
+				}			
 				
 				if(model.addEmp(emp)) {
 					view.setEmployeesListToTable(model.getEmployeesList());
@@ -83,12 +95,22 @@ public class ManagerEmployeesPageController {
 			
 			else if(e.getSource() == view.getBtnUpdate()) {
 				Employee emp = new Employee();
-				initialEmp(emp);	
+				if(!initialEmp(emp)) {
+					return;
+				}
+				if(!model.isEmpExist(emp.getEmpId())) {
+					view.displayMassage("Employee does'nt exist.");
+					return;
+				}
 				if(model.updateEmp(emp, view.getTextFieldEmpId())) {
 					view.setEmployeesListToTable(model.getEmployeesList());
 					view.displayMassage("Employee updated succesfully!");
 				}  else
 					view.displayMassage("Could not update employee.");
+			}
+			
+			else if(e.getSource() == view.getBtnClear()) {
+				view.clearFields();
 			}
 			
 			
@@ -97,12 +119,27 @@ public class ManagerEmployeesPageController {
 	}
 	
 	
-	public void initialEmp(Employee emp) {
+	public boolean initialEmp(Employee emp) {
+
 		emp.setEmpId(view.getTextFieldEmpId());
 		emp.setEmpFirstName(view.getTextFieldEmpFirstName());
 		emp.setEmpLastName(view.getTextFieldEmpLastName());
 		emp.setPassword(view.getTextFieldPassword());
 		
+		String firstName = emp.getEmpFirstName();
+		String lastName = emp.getEmpLastName();
+		String pass = emp.getPassword();
+		String id = emp.getEmpId();
+		
+		if(firstName.trim().equals("") || lastName.trim().equals("")|| pass.trim().equals("") || id.trim().equals("")) {
+			view.displayMassage("All fields must contain a value");
+			return false;
+		} else if(!firstName.matches("[a-zA-Z]+") || !lastName.matches("[a-zA-Z]+")) {
+			view.displayMassage("First name and last name can only contain letters");
+			return false;
+		}
+		
+		return true;
 	}
 	
 	

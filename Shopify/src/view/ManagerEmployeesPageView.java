@@ -38,6 +38,7 @@ public class ManagerEmployeesPageView extends JFrame {
 	private JButton btnAdd;
 	private JButton btnUpdate;
 	private JButton btnDelete;
+	private JButton btnClearButton;
 
 	/**
 	 * Launch the application.
@@ -62,7 +63,7 @@ public class ManagerEmployeesPageView extends JFrame {
 	
 	public ManagerEmployeesPageView() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 622, 448);
+		setBounds(100, 100, 744, 493);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -73,7 +74,7 @@ public class ManagerEmployeesPageView extends JFrame {
 		contentPane.add(btnBack);
 		
 		textSearch = new JTextField();
-		textSearch.setBounds(150, 88, 146, 20);
+		textSearch.setBounds(182, 88, 146, 20);
 		contentPane.add(textSearch);
 		textSearch.setColumns(10);
 		
@@ -83,67 +84,71 @@ public class ManagerEmployeesPageView extends JFrame {
 		contentPane.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("Enter Employee ID:");
-		lblNewLabel_1.setBounds(150, 63, 129, 14);
+		lblNewLabel_1.setBounds(182, 63, 129, 14);
 		contentPane.add(lblNewLabel_1);
 		
 		btnSearch = new JButton("Search");
-		btnSearch.setBounds(323, 87, 89, 23);
+		btnSearch.setBounds(355, 87, 89, 23);
 		contentPane.add(btnSearch);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(25, 125, 401, 252);
+		scrollPane.setBounds(25, 125, 534, 284);
 		contentPane.add(scrollPane);
 		
 		table = new JTable();
 		scrollPane.setViewportView(table);
 		
 		textFieldEmpId = new JTextField();
-		textFieldEmpId.setBounds(482, 22, 86, 20);
+		textFieldEmpId.setBounds(599, 154, 86, 20);
 		contentPane.add(textFieldEmpId);
 		textFieldEmpId.setColumns(10);
 		
 		textFieldEmpFirstName = new JTextField();
-		textFieldEmpFirstName.setBounds(482, 63, 86, 20);
+		textFieldEmpFirstName.setBounds(599, 195, 86, 20);
 		contentPane.add(textFieldEmpFirstName);
 		textFieldEmpFirstName.setColumns(10);
 		
 		textFieldEmpLastName = new JTextField();
-		textFieldEmpLastName.setBounds(482, 105, 86, 20);
+		textFieldEmpLastName.setBounds(599, 237, 86, 20);
 		contentPane.add(textFieldEmpLastName);
 		textFieldEmpLastName.setColumns(10);
 		
 		textFieldPassword = new JTextField();
-		textFieldPassword.setBounds(482, 143, 86, 20);
+		textFieldPassword.setBounds(599, 275, 86, 20);
 		contentPane.add(textFieldPassword);
 		textFieldPassword.setColumns(10);
 		
 		JLabel lblNewLabel_2 = new JLabel("First Name:");
-		lblNewLabel_2.setBounds(482, 46, 46, 14);
+		lblNewLabel_2.setBounds(599, 178, 86, 14);
 		contentPane.add(lblNewLabel_2);
 		
 		JLabel lblNewLabel_3 = new JLabel("Id:");
-		lblNewLabel_3.setBounds(482, 7, 46, 14);
+		lblNewLabel_3.setBounds(599, 139, 46, 14);
 		contentPane.add(lblNewLabel_3);
 		
 		JLabel lblNewLabel_4 = new JLabel("Last Name:");
-		lblNewLabel_4.setBounds(482, 87, 46, 14);
+		lblNewLabel_4.setBounds(599, 219, 86, 14);
 		contentPane.add(lblNewLabel_4);
 		
 		JLabel lblNewLabel_5 = new JLabel("Password:");
-		lblNewLabel_5.setBounds(482, 125, 46, 14);
+		lblNewLabel_5.setBounds(599, 257, 86, 14);
 		contentPane.add(lblNewLabel_5);
 		
 		btnAdd = new JButton("Add");
-		btnAdd.setBounds(25, 384, 89, 23);
+		btnAdd.setBounds(102, 420, 89, 23);
 		contentPane.add(btnAdd);
 		
 		btnUpdate = new JButton("Update");
-		btnUpdate.setBounds(185, 384, 89, 23);
+		btnUpdate.setBounds(262, 420, 89, 23);
 		contentPane.add(btnUpdate);
 		
 		btnDelete = new JButton("Delete");
-		btnDelete.setBounds(336, 384, 89, 23);
+		btnDelete.setBounds(413, 420, 89, 23);
 		contentPane.add(btnDelete);
+		
+		btnClearButton = new JButton("Clear");
+		btnClearButton.setBounds(599, 306, 86, 20);
+		contentPane.add(btnClearButton);
 		
 		
 		table.addMouseListener(new MouseListener() {
@@ -201,6 +206,7 @@ public class ManagerEmployeesPageView extends JFrame {
 		this.btnAdd.addActionListener(al);
 		this.btnDelete.addActionListener(al);
 		this.btnUpdate.addActionListener(al);
+		this.btnClearButton.addActionListener(al);
 	
 	}
 	
@@ -252,6 +258,9 @@ public class ManagerEmployeesPageView extends JFrame {
 	public String getTextFieldPassword() {
 		return textFieldPassword.getText();
 	}
+	public JButton getBtnClear() {
+		return btnClearButton;
+	}
 
 	
 	
@@ -264,5 +273,12 @@ public class ManagerEmployeesPageView extends JFrame {
 	
 	public void displayMassage(String msg) {
 		JOptionPane.showMessageDialog(this,msg);
+	}
+	
+	public void clearFields() {
+		this.textFieldEmpFirstName.setText("");
+		this.textFieldEmpId.setText("");
+		this.textFieldEmpLastName.setText("");
+		this.textFieldPassword.setText("");
 	}
 }
