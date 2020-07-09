@@ -477,10 +477,9 @@ public class DataBase {
             Connection conn = this.connect();  
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
-            
-            System.out.println("1");
 
             String itemId = rs.getString(1);
+
             String itemName = rs.getString(2);
             int price = rs.getInt(3);
             int quantity = rs.getInt(4);
@@ -494,7 +493,7 @@ public class DataBase {
             
             Item item = new Item(itemId, itemName, price, quantity, category, sleeve, neck_shape, size, form, isGoldfilled);
             
-            System.out.println(item.getCategory());
+            
             rs.close();
             conn.close();
             return item;

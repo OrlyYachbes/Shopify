@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import factory.UserFactory;
 import model.ManagerEmployeesPageModel;
 import util.Employee;
 import view.ManagerEmployeesPageView;
@@ -80,7 +81,9 @@ public class ManagerEmployeesPageController {
 			
 			else if(e.getSource() == view.getBtnAdd()) {
 				
-			    Employee emp = new Employee();
+				UserFactory userFactory = new UserFactory();
+				
+			    Employee emp = (Employee)userFactory.makeUser("E");
 				if(!initialEmp(emp)) {
 					return;
 				}			

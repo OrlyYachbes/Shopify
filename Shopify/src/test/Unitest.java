@@ -2,7 +2,9 @@ package test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 
 import database.DataBase;
 import util.Employee;
@@ -11,15 +13,17 @@ import util.Item;
 class Unitest {
 	
 	DataBase db = DataBase.getInstance();
+	
+	
+	String testId = "9999999";
+	String testString = "123456";
+	int testInt = 123456;
 
 	@Test
 	void addNewProductTest() {
 		
 		Item item = new Item();
-		
-		String testId = "9999999";
-		String testString = "123456";
-		int testInt = 123456;
+
 		
 		item.setItemId(testId);
 		item.setItemName(testString);
@@ -34,7 +38,7 @@ class Unitest {
 		
 		db.addItem(item);
 		
-		Item secItem = db.getItemById(testString);
+		Item secItem = db.getItemById(testId);
 		
 		assertEquals(item, secItem);
 
@@ -42,10 +46,35 @@ class Unitest {
 	}
 	
 	@Test
-	void deleteItem() {
+	void bupdateProductTest() {
 		
-		String testId = "9999999";
+		Item item = new Item();
 		
+		int updatedTestInt = 1111111;
+
+		item.setItemId(testId);
+		item.setItemName(testString);
+		item.setPrice(updatedTestInt);
+		item.setQuantity(updatedTestInt);
+		item.setCategory(testString);
+		item.setSleeve(testString);
+		item.setNeck_shape(testString);
+		item.setSize(testInt);
+		item.setForm(testString);
+		item.setGoldfilled(false);
+		
+		db.updateItem(item, testId);
+		
+		Item secItem = db.getItemById(testId);
+		
+		assertEquals(item, secItem);
+
+				
+	}
+	
+	@Test
+	void cdeleteItem() {
+				
 		db.deleteItem(testId);
 		
 		boolean isItemExist = db.isItem(testId);
@@ -54,44 +83,13 @@ class Unitest {
 	}
 	
 	
-	@Test
-	void UpdateProductTest() {
-		
-		Item item = new Item();
-		
-		String testId = "9999999";
-		String testString = "123456";
-		int testInt = 123456;
-		
-		item.setItemId(testId);
-		item.setItemName(testString);
-		item.setPrice(testInt);
-		item.setQuantity(testInt);
-		item.setCategory(testString);
-		item.setSleeve(testString);
-		item.setNeck_shape(testString);
-		item.setSize(testInt);
-		item.setForm(testString);
-		item.setGoldfilled(false);
-		
-		db.addItem(item);
-		
-		Item secItem = db.getItemById(testString);
-		
-		assertEquals(item, secItem);
 
-				
-	}
 	
 	
 	@Test
-	void addEmployeeTest() {
+	void eaddEmployeeTest() {
 		
 
-		String testId = "9999999";
-		String testString = "123456";
-		int testInt = 123456;
-		
 		Employee emp = new Employee();
 		emp.setEmpFirstName(testId);
 		emp.setEmpLastName(testString);
@@ -100,18 +98,18 @@ class Unitest {
 		
 		db.addEmp(emp);
 		
-		//assertEquals
+		assertTrue(db.isEmployee(testId));
 	}
 	
 	
 	@Test
-	void deleteEmp() {
+	void fdeleteEmp() {
 		
 		String testId = "9999999";
 		
-		db.deleteItem(testId);
+		db.deleteEmp(testId);
 		
-		boolean isItemExist = db.deleteEmp(testId);
+		boolean isItemExist = db.isEmployee(testId);
 		
 		assertFalse(isItemExist);
 	}
