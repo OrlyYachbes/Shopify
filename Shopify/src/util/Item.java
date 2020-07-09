@@ -12,9 +12,34 @@ public class Item {
     private int size;
     private String form;
     private boolean isGoldfilled;
+    
+    
 
     
 	
+
+	public Item(String itemId, String itemName, int price, int quantity, String category, String sleeve,
+			String neck_shape, int size, String form, boolean isGoldfilled) {
+		super();
+		this.itemId = itemId;
+		this.itemName = itemName;
+		this.price = price;
+		this.quantity = quantity;
+		this.category = category;
+		this.sleeve = sleeve;
+		this.neck_shape = neck_shape;
+		this.size = size;
+		this.form = form;
+		this.isGoldfilled = isGoldfilled;
+	}
+	
+	
+
+	public Item() {
+		super();
+	}
+
+
 
 	public String getItemId() {
         return itemId;
@@ -95,5 +120,82 @@ public class Item {
 	public void setGoldfilled(boolean isGoldfilled) {
 		this.isGoldfilled = isGoldfilled;
 	}
+
+
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((category == null) ? 0 : category.hashCode());
+		result = prime * result + ((form == null) ? 0 : form.hashCode());
+		result = prime * result + (isGoldfilled ? 1231 : 1237);
+		result = prime * result + ((itemId == null) ? 0 : itemId.hashCode());
+		result = prime * result + ((itemName == null) ? 0 : itemName.hashCode());
+		result = prime * result + ((neck_shape == null) ? 0 : neck_shape.hashCode());
+		result = prime * result + price;
+		result = prime * result + quantity;
+		result = prime * result + size;
+		result = prime * result + ((sleeve == null) ? 0 : sleeve.hashCode());
+		return result;
+	}
+
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Item other = (Item) obj;
+		if (category == null) {
+			if (other.category != null)
+				return false;
+		} else if (!category.equals(other.category))
+			return false;
+		if (form == null) {
+			if (other.form != null)
+				return false;
+		} else if (!form.equals(other.form))
+			return false;
+		if (isGoldfilled != other.isGoldfilled)
+			return false;
+		if (itemId == null) {
+			if (other.itemId != null)
+				return false;
+		} else if (!itemId.equals(other.itemId))
+			return false;
+		if (itemName == null) {
+			if (other.itemName != null)
+				return false;
+		} else if (!itemName.equals(other.itemName))
+			return false;
+		if (neck_shape == null) {
+			if (other.neck_shape != null)
+				return false;
+		} else if (!neck_shape.equals(other.neck_shape))
+			return false;
+		if (price != other.price)
+			return false;
+		if (quantity != other.quantity)
+			return false;
+		if (size != other.size)
+			return false;
+		if (sleeve == null) {
+			if (other.sleeve != null)
+				return false;
+		} else if (!sleeve.equals(other.sleeve))
+			return false;
+		return true;
+	}
+
+
+
+
+	
+	
 
 }

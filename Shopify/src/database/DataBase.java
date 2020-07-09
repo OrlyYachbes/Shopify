@@ -467,7 +467,47 @@ public class DataBase {
     //Test methods:
     
     
-    
+    public Item getItemById(String id) {
+    	
+    	String sql = "SELECT * FROM item WHERE item_id = " + id;
+			
+
+        try {
+       	 
+            Connection conn = this.connect();  
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            
+            System.out.println("1");
+
+            String itemId = rs.getString(1);
+            String itemName = rs.getString(2);
+            int price = rs.getInt(3);
+            int quantity = rs.getInt(4);
+            
+            String category = rs.getString(5);
+            String sleeve = rs.getString(6);
+            String neck_shape = rs.getString(7);
+            int size = rs.getInt(8);
+            String form = rs.getString(9);
+            boolean isGoldfilled = rs.getBoolean(10);
+            
+            Item item = new Item(itemId, itemName, price, quantity, category, sleeve, neck_shape, size, form, isGoldfilled);
+            
+            System.out.println(item.getCategory());
+            rs.close();
+            conn.close();
+            return item;
+        
+             
+
+       } catch (SQLException e) {  
+           System.out.println(e.getMessage());  
+           return null;
+       }  
+       
+       
+    }
     
     
     

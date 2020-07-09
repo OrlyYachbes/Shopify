@@ -80,7 +80,7 @@ public class ManagerProductsPageController {
 				
 				Item item = new Item();
 				if(!initialItem(item))
-					return;		
+					return;
 				
 				if(model.addItem(item)) {
 					view.setProductsListToTable(model.getProductsList());
